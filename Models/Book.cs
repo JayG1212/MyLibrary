@@ -1,13 +1,8 @@
-﻿//using System.ComponentModel.DataAnnotations.Schema;
-//using System.ComponentModel.DataAnnotations;
-
-namespace MyShelves.Models
+﻿namespace MyLibrary.Models
 {
     public class Book
     {
         // Varialbes
-       // [Key]
-       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // BookID auto-increment
 
         private int bookID = -1;
         private string title = "N/A";

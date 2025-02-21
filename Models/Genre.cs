@@ -1,4 +1,4 @@
-﻿namespace MyShelves.Models
+﻿namespace MyLibrary.Models
 {
     public class Genre
     {
