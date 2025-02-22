@@ -1,8 +1,32 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<div class="container d-flex justify-content-center align-items-center mt-5"> <!-- Centering the header -->   
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to My Library!</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="jumbotron">
+    <h1>My Library</h1>
+
+        <div
+            class="container mt-5 mb-5">
+        </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Welcome to My Library</h2>
+        <p>
+            My Library is a Web app I made for my Design Patterns class.
+            It utalizes the MVC design pattern and uses CRUD functionality to keep track of a user's
+            book list
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Background</h2>
+        <p>I am new to html and ASP.net development, so I tried to start by following the basic outlines provided by Microsoft's official tutorials.'</p>
+        <p><a class="btn btn-default" href="https://docs.asp.net/en/latest/data/ef-mvc/intro.html">See the tutorial &raquo;</a></p>
+</div>
+    <div class="col-md-4">
+        <h2>Project Repository</h2>
+        <p>You can view the project's source code on my GitHub.</p>
+        <p><a class="btn btn-default" href="https://github.com/JayG1212/MyLibrary">See project source code &raquo;</a></p>
+    </div>
 </div>
