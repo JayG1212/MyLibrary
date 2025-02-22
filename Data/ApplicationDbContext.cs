@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MyLibrary.Models;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace MyLibrary.Data
 {
@@ -8,5 +10,10 @@ namespace MyLibrary.Data
         {
 
         }
+
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Shelf> Shelves { get; set; }
     }
 }

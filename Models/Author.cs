@@ -2,8 +2,10 @@
 {
     public class Author
     {
-        private int authorID = -1;
+        private int authorID = 0; // Primary Key
         private string authorName = "n/a";
+        public List<Book> Books { get; set; } = new List<Book>(); // Navigation property
+
 
         // Accessors and Mutators
         public int AuthorID
@@ -23,7 +25,7 @@
             this.AuthorID = anAuthorID;
             this.AuthorName = anAuthorName;
         }
-        public Author(): this(-1, "n/a")
+        public Author(): this(0, "n/a")
         {
             // Empty
         }
@@ -35,6 +37,7 @@
                 $"""
                 Author ID: {this.AuthorID}
                 Author Name: {this.AuthorName}
+                Books Written: {this.Books.Count}
                 """;
             return msg;
         }

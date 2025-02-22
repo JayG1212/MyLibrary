@@ -1,15 +1,22 @@
-﻿namespace MyLibrary.Models
+﻿using System;
+
+namespace MyLibrary.Models
 {
     public class Book
     {
         // Varialbes
 
-        private int bookID = -1;
+        private int bookID = 0; // Primary Key
         private string title = "N/A";
-        private int authorID = -1;
         private int publicationYear = -1;
         private int pages = -1;
-        private int genreID = -1;
+
+        //Navigation Properties (Foreign keys)
+        public Author Author { get; set; }
+        public Genre Genre { get; set; }
+        public Shelf Shelf { get; set; }
+
+
 
         // Accessors and Mutators
 
@@ -23,11 +30,7 @@
             get { return this.title; }
             set { this.title = value; }
         }
-        public int AuthorID
-        {
-            get { return this.authorID; }
-            set { this.authorID = value; }
-        }
+    
         public int PublicationYear
         {
             get { return this.publicationYear; }
@@ -38,24 +41,22 @@
             get { return this.pages; }
             set { this.pages = value; }
         }
-        public int GenreID
-        {
-            get { return this.genreID; }
-            set { this.genreID = value; }
-        }
+    
 
         // Constructor
-        public Book(int aBookID, string aTitle, int anAuthorID, int aPublicationYear, int somePages, int aGenreID)
+        public Book(int aBookID, string aTitle, int aPublicationYear, int somePages,Author anAuthor, Genre aGenre, Shelf aShelf)
         {
             this.BookID = aBookID;
             this.Title = aTitle;
-            this.AuthorID = anAuthorID;
             this.PublicationYear = aPublicationYear;
             this.Pages = somePages;
-            this.GenreID = aGenreID;
+            this.Author = anAuthor ?? new Author(); 
+            this.Genre = aGenre ?? new Genre(); 
+            this.Shelf = aShelf ?? new Shelf(); 
+
         }
 
-        public Book() : this(-1, "n/a", -1, -1, -1, -1)
+        public Book() : this(0, "n/a", -1, -1, new Author(), new Genre(), new Shelf())
         {
             // Empty
         }
@@ -69,10 +70,11 @@
 
                 BookID: {this.BookID}
                 Title: {this.Title}
-                AuthorID: {this.AuthorID}
+                Author: {this.Author.AuthorName ?? "Unknown"}
                 PublicationYear: {this.PublicationYear}
                 Pages: {this.Pages}
-                GenreID: {this.GenreID}
+                Genre: {this.Genre.GenreName ?? "Unknown"}
+                Shelf: {this.Shelf.ShelfName ?? "Unknown"}
                 """;
 
             return msg;

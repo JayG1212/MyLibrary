@@ -2,8 +2,9 @@
 {
     public class Genre
     {
-        private int genreID = -1;
+        private int genreID = 0; // Primary Key
         private string genreName = "n/a";
+        public List<Book> Books { get; set; } = new List<Book>(); // Navigation property
 
         // Accessors and Mutators
         public int GenreID
@@ -23,7 +24,7 @@
             this.GenreID = aGenreID;
             this.GenreName = aGenreName;
         }
-        public Genre() : this(-1, "n/a")
+        public Genre() : this(0, "n/a")
         {
             // Empty
         }
@@ -35,6 +36,7 @@
                 $"""
                 Genre ID: {this.GenreID}
                 Genre Name: {this.GenreName}
+                Books in Genre: {this.Books.Count}
                 """;
             return msg;
         }

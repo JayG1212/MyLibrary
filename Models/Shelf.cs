@@ -2,8 +2,9 @@
 {
     public class Shelf
     {
-        private int shelfID = -1;
+        private int shelfID = 0; // Primary Key
         private string shelfName = "n/a";
+        public List<Book> Books { get; set; } = new List<Book>(); // Navigation property
 
         // Accessors and Mutators
         public int ShelfID
@@ -26,7 +27,7 @@
             this.ShelfName = aShelfName;
         }
         
-        public Shelf(): this(-1, "n/a")
+        public Shelf(): this(0, "n/a")
         {
             // Empty
         }
@@ -40,6 +41,7 @@
             msg += $"""
                 Shelf ID {this.ShelfID}
                 Shelf Name {this.ShelfName}
+                Books on Shelf: {this.Books.Count}
                 """;
             return msg;
         }
