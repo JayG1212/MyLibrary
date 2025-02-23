@@ -1,8 +1,11 @@
-﻿namespace MyLibrary.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyLibrary.Models
 {
     public class Shelf
     {
-        private int shelfID = 0; // Primary Key
+        [Key]
+        private int shelfID; // Primary Key
         private string shelfName = "n/a";
         public List<Book> Books { get; set; } = new List<Book>(); // Navigation property
 
@@ -21,13 +24,13 @@
 
         // Constructors
 
-        public Shelf(int aShelfID, string aShelfName)
+        public Shelf( string aShelfName)
         {
-            this.ShelfID = aShelfID;
             this.ShelfName = aShelfName;
+            Books = new List<Book>(); // Initializes list
         }
         
-        public Shelf(): this(0, "n/a")
+        public Shelf(): this("n/a")
         {
             // Empty
         }

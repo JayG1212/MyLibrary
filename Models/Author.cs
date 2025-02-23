@@ -1,8 +1,11 @@
-﻿namespace MyLibrary.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyLibrary.Models
 {
     public class Author
     {
-        private int authorID = 0; // Primary Key
+        [Key]
+        private int authorID; // Primary Key
         private string authorName = "n/a";
         public List<Book> Books { get; set; } = new List<Book>(); // Navigation property
 
@@ -20,12 +23,13 @@
         }
 
         // Constructor
-        public Author(int anAuthorID, string anAuthorName)
+        public Author( string anAuthorName)
         {
-            this.AuthorID = anAuthorID;
             this.AuthorName = anAuthorName;
+            Books = new List<Book>(); // Initialize List in Constructor
+
         }
-        public Author(): this(0, "n/a")
+        public Author(): this("n/a")
         {
             // Empty
         }

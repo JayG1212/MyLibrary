@@ -1,19 +1,31 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyLibrary.Models
 {
     public class Book
     {
         // Varialbes
-
-        private int bookID = 0; // Primary Key
+        [Key]
+        private int bookID; // Primary Key
         private string title = "N/A";
         private int publicationYear = -1;
         private int pages = -1;
 
-        //Navigation Properties (Foreign keys)
+        // Foreign Keys
+        public int AuthorID { get; set; }
+        public int GenreID { get; set; }
+        public int ShelfID { get; set; }
+
+        // Navigation Properties (Relationships)
+        [ForeignKey("AuthorID")]
         public Author Author { get; set; }
+
+        [ForeignKey("GenreID")]
         public Genre Genre { get; set; }
+
+        [ForeignKey("ShelfID")]
         public Shelf Shelf { get; set; }
 
 
@@ -44,22 +56,21 @@ namespace MyLibrary.Models
     
 
         // Constructor
-        public Book(int aBookID, string aTitle, int aPublicationYear, int somePages,Author anAuthor, Genre aGenre, Shelf aShelf)
+        public Book(string aTitle, int aPublicationYear, int somePages, int authorID, int genreID, int shelfID)
         {
-            this.BookID = aBookID;
             this.Title = aTitle;
             this.PublicationYear = aPublicationYear;
             this.Pages = somePages;
-            this.Author = anAuthor ?? new Author(); 
-            this.Genre = aGenre ?? new Genre(); 
-            this.Shelf = aShelf ?? new Shelf(); 
+            this.AuthorID = authorID;
+            this.GenreID = genreID;
+            this.ShelfID = shelfID;
 
         }
-
-        public Book() : this(0, "n/a", -1, -1, new Author(), new Genre(), new Shelf())
+        public Book() { }
+       /* public Book() : this(0, "n/a", -1, -1, new Author(), new Genre(), new Shelf())
         {
             // Empty
-        }
+        }*/
 
         // ToString()
         public override string ToString()
