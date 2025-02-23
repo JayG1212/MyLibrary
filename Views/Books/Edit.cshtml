@@ -11,39 +11,69 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="AuthorID" class="control-label"></label>
-                <select asp-for="AuthorID" class="form-control" asp-items="ViewBag.AuthorID"></select>
-                <span asp-validation-for="AuthorID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GenreID" class="control-label"></label>
-                <select asp-for="GenreID" class="form-control" asp-items="ViewBag.GenreID"></select>
-                <span asp-validation-for="GenreID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShelfID" class="control-label"></label>
-                <select asp-for="ShelfID" class="form-control" asp-items="ViewBag.ShelfID"></select>
-                <span asp-validation-for="ShelfID" class="text-danger"></span>
-            </div>
+           
+            <!-- Edit Title -->
             <input type="hidden" asp-for="BookID" />
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
+
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="PublicationYear" class="control-label"></label>
-                <input asp-for="PublicationYear" class="form-control" />
-                <span asp-validation-for="PublicationYear" class="text-danger"></span>
+                <label asp-for="Author" class="control-label"></label>
+                <select asp-for="AuthorID" class="form-control" asp-items="ViewBag.AuthorID"></select>
+                <span asp-validation-for="AuthorID" class="text-danger"></span>
             </div>
+
+
+
+            <!-- Edit Page count -->
+
+            <input type="hidden" asp-for="BookID" />
+
             <div class="form-group">
                 <label asp-for="Pages" class="control-label"></label>
                 <input asp-for="Pages" class="form-control" />
                 <span asp-validation-for="Pages" class="text-danger"></span>
             </div>
+
+            <!-- Edit Publication Year -->
+
             <div class="form-group">
+                <label asp-for="PublicationYear" class="control-label"></label>
+                <input asp-for="PublicationYear" class="form-control" />
+                <span asp-validation-for="PublicationYear" class="text-danger"></span>
+            </div>
+
+
+
+
+            <!-- Edit Genre -->
+
+            <div class="form-group">
+                <label asp-for="Genre" class="control-label"></label>
+                <select asp-for="GenreID" class="form-control" asp-items="ViewBag.GenreID"></select>
+                <span asp-validation-for="GenreID" class="text-danger"></span>
+            </div>
+
+
+            <!-- Edit Shelf-->
+
+            <div class="form-group">
+                <label asp-for="Shelf" class="control-label"></label>
+                <select asp-for="ShelfID" class="form-control" asp-items="ViewBag.ShelfID"></select>
+                <span asp-validation-for="ShelfID" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="BookID" />
+
+           
+            <div class="form-group">
+                <p></p>
+
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

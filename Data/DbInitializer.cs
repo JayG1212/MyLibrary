@@ -44,53 +44,6 @@ namespace MyLibrary.Data
             }
             context.SaveChanges();
 
-
-            var authors = new Author[]
-            {
-                new Author
-                {
-                    AuthorName = "Herman Melville"
-                }
-            };
-
-            foreach (Author a in authors)
-            {
-                context.Authors.Add(a);
-            }
-            context.SaveChanges();
-
-
-            var genres = new Genre[]
-            {
-                new Genre
-                {
-                    GenreName = "Fiction"
-                }
-            };
-
-            foreach (Genre g in genres)
-            {
-                context.Genres.Add(g);
-            }
-            context.SaveChanges();
-
-            var shelves = new Shelf[]
-           {
-                new Shelf
-                {
-                    ShelfName = "Read"
-                }
-           };
-
-            foreach(Shelf i in shelves) 
-            {
-                context.Shelves.Add(i);
-            }
-            context.SaveChanges();
-
-
-
-
         }
     }
 }

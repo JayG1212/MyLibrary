@@ -50,9 +50,9 @@ namespace MyLibrary.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "AuthorID");
-            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreID");
-            ViewData["ShelfID"] = new SelectList(_context.Shelves, "ShelfID", "ShelfID");
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "AuthorName"); // Will drop down list of Authors
+            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreName"); // Will drop down list of Genres
+            ViewData["ShelfID"] = new SelectList(_context.Shelves, "ShelfID", "ShelfName"); // Will drop down list of Shelves
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace MyLibrary.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AuthorID,GenreID,ShelfID,BookID,Title,PublicationYear,Pages")] Book book)
+        public async Task<IActionResult> Create([Bind("BookID,AuthorID,GenreID,ShelfID,Title,PublicationYear,Pages")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -69,9 +69,9 @@ namespace MyLibrary.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "AuthorID", book.AuthorID);
-            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreID", book.GenreID);
-            ViewData["ShelfID"] = new SelectList(_context.Shelves, "ShelfID", "ShelfID", book.ShelfID);
+          //  ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "AuthorID", book.AuthorID);
+          //  ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreID", book.GenreID);
+         //   ViewData["ShelfID"] = new SelectList(_context.Shelves, "ShelfID", "ShelfID", book.ShelfID);
             return View(book);
         }
 
@@ -88,9 +88,9 @@ namespace MyLibrary.Controllers
             {
                 return NotFound();
             }
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "AuthorID", book.AuthorID);
-            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreID", book.GenreID);
-            ViewData["ShelfID"] = new SelectList(_context.Shelves, "ShelfID", "ShelfID", book.ShelfID);
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "AuthorName", book.AuthorID);
+            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreName", book.GenreID);
+            ViewData["ShelfID"] = new SelectList(_context.Shelves, "ShelfID", "ShelfName", book.ShelfID);
             return View(book);
         }
 
@@ -126,9 +126,9 @@ namespace MyLibrary.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "AuthorID", book.AuthorID);
-            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreID", book.GenreID);
-            ViewData["ShelfID"] = new SelectList(_context.Shelves, "ShelfID", "ShelfID", book.ShelfID);
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "AuthorName", book.AuthorID);
+            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreName", book.GenreID);
+            ViewData["ShelfID"] = new SelectList(_context.Shelves, "ShelfID", "ShelfName", book.ShelfID);
             return View(book);
         }
 
