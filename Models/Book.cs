@@ -56,7 +56,7 @@ namespace MyLibrary.Models
     
 
         // Constructor
-       /* public Book(string aTitle, int aPublicationYear, int somePages, int authorID, int genreID, int shelfID)
+        public Book(string aTitle, int aPublicationYear, int somePages, int authorID, int genreID, int shelfID)
         {
             this.Title = aTitle;
             this.PublicationYear = aPublicationYear;
@@ -65,7 +65,7 @@ namespace MyLibrary.Models
             this.GenreID = genreID;
             this.ShelfID = shelfID;
 
-        }*/
+        }
         public Book() { }
        /* public Book() : this(0, "n/a", -1, -1, new Author(), new Genre(), new Shelf())
         {
