@@ -22,7 +22,10 @@ namespace MyLibrary.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Books.Include(b => b.Author).Include(b => b.Genre).Include(b => b.Shelf);
+            var applicationDbContext = _context.Books
+                .Include(b => b.Author)
+                .Include(b => b.Genre)
+                .Include(b => b.Shelf);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -69,9 +72,9 @@ namespace MyLibrary.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-          //  ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "AuthorID", book.AuthorID);
-          //  ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreID", book.GenreID);
-         //   ViewData["ShelfID"] = new SelectList(_context.Shelves, "ShelfID", "ShelfID", book.ShelfID);
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorName", "AuthorName", book.AuthorID);
+            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreName", "GenreName", book.GenreID);
+            ViewData["ShelfID"] = new SelectList(_context.Shelves, "ShelfID", "ShelfName", book.ShelfID);
             return View(book);
         }
 
@@ -99,7 +102,7 @@ namespace MyLibrary.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AuthorID,GenreID,ShelfID,BookID,Title,PublicationYear,Pages")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("BookID,AuthorID,GenreID,ShelfID,BookID,Title,PublicationYear,Pages")] Book book)
         {
             if (id != book.BookID)
             {

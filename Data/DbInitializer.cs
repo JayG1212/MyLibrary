@@ -1,4 +1,5 @@
-﻿using MyLibrary.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MyLibrary.Models;
 using System;
 using System.Linq;
 namespace MyLibrary.Data
@@ -7,7 +8,7 @@ namespace MyLibrary.Data
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            context.Database.EnsureCreated();
+            context.Database.Migrate();
             // Look for any students.
             if (context.Books.Any())
             {
@@ -32,9 +33,9 @@ namespace MyLibrary.Data
                     Title="Moby Dick", 
                     PublicationYear=1851, 
                     Pages=625,
-                    Author = author, 
-                    Genre = genre,    
-                    Shelf = shelf 
+                    AuthorID = author.AuthorID, 
+                    GenreID = genre.GenreID,    
+                    ShelfID = shelf.ShelfID 
                 }
 
             };
